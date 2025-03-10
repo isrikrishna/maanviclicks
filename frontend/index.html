@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> <!-- Add playful font -->
+</head>
+<body>
+  <!-- Notification Banner -->
+  <div id="notification" class="notification" role="alert" aria-live="polite"></div>
+
+  <section class="gallery-container" aria-labelledby="gallery-title">
+    <h1 id="gallery-title"> Maanvish Clicks👶</h1> <!-- Added emojis for cuteness -->
+    <div class="upload-section">
+      <input type="file" id="image-upload" accept="image/*" multiple aria-label="Upload images">
+      <button id="upload-button">Upload Images</button>
+    </div>
+    <div class="gallery" id="gallery" role="region" aria-live="polite"></div>
+    <div id="pagination" role="navigation" aria-label="Pagination"></div>
+  </section>
+
+  <!-- Lightbox for viewing images -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-labelledby="lightbox-title">
+    <span class="close" id="close-lightbox" aria-label="Close lightbox">&times;</span>
+    <img class="lightbox-image" id="lightbox-image" alt="Enlarged view of the selected image">
+  </div>
+
+  <!-- Edit modal for updating image metadata -->
+  <div class="edit-modal" id="edit-modal" role="dialog" aria-labelledby="edit-modal-title">
+    <div class="edit-modal-content">
+      <span class="close" id="close-edit-modal" aria-label="Close edit modal">&times;</span>
+      <h2 id="edit-modal-title">Edit Image</h2>
+      <input type="text" id="new-filename" placeholder="New filename" aria-label="New filename">
+      <button id="save-edit">Save</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

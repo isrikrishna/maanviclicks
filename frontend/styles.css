@@ -1,0 +1,380 @@
+/* Body with animated gradient background */
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #fbc2eb, #ff9a9e);
+  background-size: 400% 400%; /* Larger background size for animation */
+  animation: gradientAnimation 15s ease infinite; /* Apply the animation */
+}
+
+/* Keyframes for gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Fade-in animation for the gallery container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-container {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  position: relative; /* Required for the pseudo-element */
+  overflow: hidden; /* Hide overflow from the pseudo-element */
+  animation: fadeIn 1s ease-out; /* Apply the fade-in animation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover transition */
+}
+
+/* Hover effect for the gallery container */
+.gallery-container:hover {
+  transform: scale(1.02); /* Slightly scale up */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Increase shadow */
+}
+
+/* Baby-themed header animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    color: #ff6f61; /* Original color */
+  }
+  25% {
+    transform: translateY(-10px);
+    color: #ff8c7f; /* Lighter shade */
+  }
+  50% {
+    transform: translateY(0);
+    color: #ff6f61; /* Original color */
+  }
+  75% {
+    transform: translateY(-5px);
+    color: #ff8c7f; /* Lighter shade */
+  }
+}
+
+h1 {
+  color: #ff6f61;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite; /* Apply the bounce animation */
+  display: inline-block; /* Required for transform animations */
+  font-family: 'Roboto', cursive; /* Use a playful font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Add a baby-themed background to the header (optional) */
+.gallery-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/cribbage.png'); /* Baby-themed pattern */
+  opacity: 0.1; /* Subtle background */
+  pointer-events: none; /* Ensure it doesn't block clicks */
+}
+
+/* Upload Section */
+.upload-section {
+  margin-bottom: 20px;
+}
+
+#image-upload {
+  display: none;
+}
+
+#upload-button {
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#upload-button:hover,
+#upload-button:focus {
+  background-color: #ff4a3d;
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Gallery Styles */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Pagination Styles */
+#pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#pagination button:hover:not(:disabled) {
+  background-color: #ff4a3d;
+}
+
+/* Lightbox Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Edit Modal Styles */
+.edit-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.edit-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.edit-modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-modal-content button {
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-modal-content button:hover {
+  background-color: #ff4a3d;
+}
+
+/* Edit and Delete Button Styles */
+.edit-button, .delete-button {
+  position: absolute;
+  bottom: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  right: 10px;
+  background-color: #007bff;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  left: 10px;
+  background-color: #ff3b30;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Notification Styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  z-index: 1001;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notification.success {
+  background-color: #28a745;
+}
+
+.notification.error {
+  background-color: #dc3545;
+}
+
+.notification.hide {
+  opacity: 0;
+  transform: translate(-50%, -20px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Smaller heading for smaller screens */
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Smaller image containers */
+  }
+
+  .gallery img {
+    height: 120px; /* Smaller images */
+  }
+
+  .edit-modal-content {
+    width: 90%; /* Wider modal for small screens */
+  }
+
+  .lightbox-image {
+    max-width: 95%; /* Larger lightbox image for small screens */
+    max-height: 80%;
+  }
+
+  #upload-button {
+    padding: 8px 16px; /* Smaller button */
+    font-size: 0.9rem;
+  }
+
+  .edit-button, .delete-button {
+    padding: 4px 8px; /* Smaller buttons */
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem; /* Even smaller heading for mobile */
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Smaller grid for mobile */
+  }
+
+  .gallery img {
+    height: 100px; /* Smaller images for mobile */
+  }
+
+  .edit-modal-content {
+    width: 95%; /* Full-width modal for mobile */
+    padding: 15px;
+  }
+
+  .lightbox-image {
+    max-width: 100%; /* Full-width lightbox image for mobile */
+    max-height: 70%;
+  }
+
+  #upload-button {
+    padding: 6px 12px; /* Smaller button for mobile */
+    font-size: 0.8rem;
+  }
+
+  .edit-button, .delete-button {
+    padding: 3px 6px; /* Smaller buttons for mobile */
+    font-size: 10px;
+  }
+}
